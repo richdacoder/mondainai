@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <div class="row g-4 justify-content-center" >
+    <% @items.each do |item| %>
+      <h1> <%= item.name %>  </h1>
+      <p> <%=  item.description %> </p>
+      <% if item.photo.attached? %>
+        <%= image_tag url_for(item.photo) %>
+      <% end %>
+      <p><%= item.dimensions %> </p>
+      <p> <%= item.weight %> </p>
+      <p> <%= item.user.name %> </p>
+    <% end %>
+  </div>
+</div>
