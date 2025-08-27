@@ -53,7 +53,7 @@ item1 = Item.new(
   item1.photo.attach(io: nice_chair, filename: "nice_chair.png", content_type: "image/png")
   item1.save
 
-item2 = Item.create!(
+item2 = Item.new(
   name: 'New Chair!',
   description: Faker::Quote.robin,
   dimensions: "1m x 1m x 1m",
@@ -65,7 +65,7 @@ future_chair = URI.parse("https://curatedinterior.com/wp-content/uploads/2021/04
   item2.photo.attach(io: future_chair, filename: "future_chair.png", content_type: "image/png")
   item2.save
 
-item3 = Item.create!(
+item3 = Item.new(
   name: 'Ramen!',
   description: Faker::Quote.robin,
   dimensions: "1m x 1m x 1m",
