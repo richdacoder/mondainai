@@ -1,0 +1,16 @@
+<h1>Requests</h1>
+<div class="d-flex flex-wrap justify-content-between m-3 row-gap-3">
+  <% @requests.each do |request| %>
+    <p><%= request.first.item %></p>
+    <a href="#" class="text-decoration-none">
+      <div class="card rounded-4 overflow-hidden" style="width: 12rem;">
+        <img src=" <%= request.item %> " class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= request.name %></h5>
+          <p class="card-text"><%= request.user.name %></p>
+        </div>
+      </div>
+    </a>
+  <% end %>
+  <% raise %>
+</div>
