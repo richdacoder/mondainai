@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_27_030344) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_27_072615) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,7 +45,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_27_030344) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "photo"
     t.integer "status"
     t.date "available_date"
     t.date "deadline_date"
@@ -84,7 +83,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_27_030344) do
     t.string "name"
     t.integer "status"
     t.string "phone_number"
-    t.string "profile_picture"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
