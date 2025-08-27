@@ -7,4 +7,6 @@ class Item < ApplicationRecord
   validates :photo, presence: true
   enum status: { draft: 0, live: 1, pending: 2, claimed: 3 }
   validates :weight, numericality: { only_integer: true }
+
+
 end
