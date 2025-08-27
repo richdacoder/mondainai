@@ -96,11 +96,30 @@ puts "Creating items..."
 item = Item.create!(
   name: 'Old Chair',
   description: Faker::Quote.robin,
-  photo: FakePicture::Company.logo,
+  photo: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.antiquesatlas.com%2Fdealer-stock-images%2Flondonfine%2FAntique_Walnut_Spoon_Back_Armc_as272a2181z.jpg&f=1&nofb=1&ipt=78f9352eb7a945081d661c4ec69a9972ca7f6e9b1372dd3af6290f71067fa07b",
   dimensions: "1m x 1m x 1m",
   weight: 1,
   user: andrew
 )
+
+item = Item.create!(
+  name: 'New Chair!',
+  description: Faker::Quote.robin,
+  photo: "https://curatedinterior.com/wp-content/uploads/2021/04/Eero-Aarnio-Ball-Chair-Iconic-Mid-Century-Modern-Chair-Designs.jpg",
+  dimensions: "1m x 1m x 1m",
+  weight: 1,
+  user: andrew
+)
+
+item = Item.create!(
+  name: 'Ramen!',
+  description: Faker::Quote.robin,
+  photo: "https://m.media-amazon.com/images/I/813yz-8zlFL.jpg",
+  dimensions: "1m x 1m x 1m",
+  weight: 1,
+  user: andrew
+)
+
 puts "Items created!"
 
 puts "Creating Requests..."
