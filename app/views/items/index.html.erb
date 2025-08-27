@@ -1,14 +1,13 @@
-<div class="container mt-5">
-  <div class="row g-4 justify-content-center" >
-    <% @items.each do |item| %>
-      <h1> <%= item.name %>  </h1>
-      <p> <%=  item.description %> </p>
-      <% if item.photo.attached? %>
-        <%= image_tag url_for(item.photo) %>
-      <% end %>
-      <p><%= item.dimensions %> </p>
-      <p> <%= item.weight %> </p>
-      <p> <%= item.user.name %> </p>
-    <% end %>
-  </div>
+<div class="d-flex flex-wrap justify-content-between m-3 row-gap-3">
+  <% @items.each do |item| %>
+    <a href="#" class="text-decoration-none">
+      <div class="card rounded-4 overflow-hidden" style="width: 12rem;">
+        <img src=" <%= item.photo %> " class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= item.name %></h5>
+          <p class="card-text"><%= item.user.name %></p>
+        </div>
+      </div>
+    </a>
+  <% end %>
 </div>
