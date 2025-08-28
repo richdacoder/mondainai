@@ -2,21 +2,33 @@
   <div>
     <h1> <%= @request.user.name %> </h1>
     <% @request.messages.each  do |message|%>
-      <div class="chat box border rouded d-flex flex-row justify-content-start mb-4" >
-        <div  class="p-3 ms-3" style="border-radius: 15px">
-          <p> <%= message.content %></p>
-          <p> <%= message.created_at.strftime("%b %e, %l:%M %p") %> </p>
+      <% if message.user == current_user %>
+        <div class="d-flex justify-content-end" >
+          <div class="bg-white px-3 py-3 rounded-5">
+            <span> <%= message.content %></span>
+          </div>
         </div>
-      </div>
+        <div class="d-flex justify-content-end mb-2" >
+          <small class="text-secondary fw-light" > <%= message.created_at.strftime("%b %e, %l:%M %p") %> </small>
+        </div>
+      <% else %>
+        <div class="d-flex justify-content-start" >
+          <div class="bg-dark text-white px-3 py-3 rounded-5">
+            <span> <%= message.content %></span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-start mb-2" >
+          <small class="text-secondary fw-light" > <%= message.created_at.strftime("%b %e, %l:%M %p") %> </small>
+        </div>
+      <% end %>
     <% end %>
-    <div class="col-sm-4 my-3">
-      <%= form_with url: requests_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-            params[:query],
-            class: "form-control rounded-pill",
-            placeholder: "Enter your message"
-        %>
-        <%= submit_tag "Send", name: "", class: "btn btn-danger rounded-pill" %>
+    <div class="col-sm-6 my-3">
+      <%= form_with model: [@request, Message.new], local: true, class: "d-flex" do |f| %>
+        <%= f.text_field :content,
+        class: "form-control rounded-pill",
+        placeholder: "Enter your message"
+    %>
+        <%= f.submit "Send", class: "btn btn-danger rounded-pill ms-2" %>
       <% end %>
     </div>
   </div>
