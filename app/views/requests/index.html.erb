@@ -1,14 +1,16 @@
 <div class="container">
   <%= render "shared/navbar-back" %>
   <div class="d-flex flex-column gap-3">
-    <h2 class="page-title">Requests</h2>
-    <% @requests.each do |request| %>
+    <h2 class="page-title">Requests Received</h2>
+    <% @requests_received.each do |request| %>
       <div class="card d-flex flex-row align-items-center rounded-4 justify-content-between pe-3 overflow-hidden">
-        <%= cl_image_tag request.item.photo.key, class: "col-4" %>
-        <div class="card-body">
-          <h5 class="card-title"><%= request.item.name %></h5>
-          <p class="card-text"><%= request.user.name %></p>
-        </div>
+        <%= link_to item_path(request.item), class: "d-flex flex-row align-items-center" do %>
+          <%= cl_image_tag request.item.photo.key, class: "col-4" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= request.item.name %></h5>
+            <p class="card-text"><%= request.user.name %></p>
+          </div>
+        <% end %>
         <%= link_to "Chat", request_path(request), class: "btn btn-primary rounded-3" %>
       </div>
     <% end %>

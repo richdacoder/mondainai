@@ -1,4 +1,5 @@
-<div class="container py-5" id="request_show" >
+<div class="container" id="request_show" >
+  <%= render "shared/navbar-back-menu" %>
   <div>
     <h1> <%= @request.user.name %> </h1>
     <% @request.messages.each  do |message|%>
