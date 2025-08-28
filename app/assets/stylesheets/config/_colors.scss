@@ -11,3 +11,9 @@ $light-gray: #F4F4F4;
 
 $primary-action: #ED2530;
 $font-color: #26364F;
+$mondainai-background: #E6F5F3;
+
+body {
+  background-image: image-url("background-wave.svg") !important;
+  background-repeat: repeat !important;
+}
