@@ -5,5 +5,6 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    @message = Message.new
   end
 end
