@@ -1,11 +1,15 @@
 <div class="container py-5" >
   <div>
-    <h1>Request
-      <h1>
-        <%= @request.user.name %>
-        <% @request.messages.each  do |message|%>
-          <%= message.content %>
-          <%= message.created_at.strftime("%b %e, %l:%M %p") %>
-        <% end %>
+    <h1><%= @request.user.name %></h1>
+    <% @request.messages.each  do |message|%>
+      <div class="chat-box d-flex flex-row justify-content-end mb-4">
+        <div class ="p-1 border rounded-4 " >
+          <div class="p-3 ms-3" style="border-radius: 15px;">
+            <div><%= message.content %></div>
+            <small class="class="d-block text-end text-muted><%= message.created_at.strftime("%b %e, %l:%M %p") %></small>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
+  </div>
+</div>
