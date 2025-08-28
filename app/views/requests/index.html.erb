@@ -8,8 +8,8 @@
           <h5 class="card-title"><%= request.item.name %></h5>
           <p class="card-text"><%= request.user.name %></p>
         </div>
-        <div class="btn btn-primary d-flex justify-content-center align-items-center">
-          Chat
+        <div >
+          <%= link_to "Chat", request_path(request), class: "btn btn-primary d-flex justify-content-center align-items-center" %>
         </div>
       </div>
     </a>
