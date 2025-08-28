@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :items
   has_many :requests_as_owner, through: :items, source: :requests
   has_many :messages
+  has_one_attached :profile_picture
   validates :name, presence: true
 end

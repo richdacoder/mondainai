@@ -1,65 +1,12 @@
 require "faker"
+require "open-uri"
 
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 puts "Cleaning database..."
 Request.destroy_all
 Item.destroy_all
 User.destroy_all
-# Request.destroy_all
-# Message.destroy_all
 
-# puts "Creating users..."
-# users = []
-#  5.times do
-#   users << User.create!(
-#     email: Faker::Internet.unique.email,
-#     password: "password123",
-#     password_confirmation: "password123",
-#     name: Faker::App.name,
-#     phone_number: Faker::PhoneNumber.phone_number
-#   )
-#  end
-
-
-
-# items = []
-# users.each do |user|
-# 5.times do
-#   items << Item.create!(
-  #     name: Faker::ElectricalComponents.electromechanical,
-  #     description: Faker::Quote.robin,
-  #     photo: FakePicture::Company.logo,
-  #     dimensions: "1m x 1m x 1m",
-  #     weight: 1,
-  #     user: user
-  #   )
-  #  end
-  # end
-
-
-
-
-  #  requests = []
-  #  items.each do |item|
-  #   Request.create!(
-    #   item: item,
-    #   user: item.user,
-    #   status: rand(0..3)
-    #   )
-    #  end
-
-
-
-
-puts "Creating Messages..."
+puts "Creating Users..."
 
 alonzo = User.create!(
   email: 'alonzo@email.com',
@@ -93,44 +40,54 @@ puts "Users created!"
 
 puts "Creating items..."
 
-item = Item.create!(
+
+item1 = Item.new(
   name: 'Old Chair',
   description: Faker::Quote.robin,
-  photo: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.antiquesatlas.com%2Fdealer-stock-images%2Flondonfine%2FAntique_Walnut_Spoon_Back_Armc_as272a2181z.jpg&f=1&nofb=1&ipt=78f9352eb7a945081d661c4ec69a9972ca7f6e9b1372dd3af6290f71067fa07b",
   dimensions: "1m x 1m x 1m",
   weight: 1,
   user: andrew
-)
+  )
 
-item = Item.create!(
+  nice_chair = URI.parse("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.antiquesatlas.com%2Fdealer-stock-images%2Flondonfine%2FAntique_Walnut_Spoon_Back_Armc_as272a2181z.jpg&f=1&nofb=1&ipt=78f9352eb7a945081d661c4ec69a9972ca7f6e9b1372dd3af6290f71067fa07b").open
+  item1.photo.attach(io: nice_chair, filename: "nice_chair.png", content_type: "image/png")
+  item1.save
+
+item2 = Item.new(
   name: 'New Chair!',
   description: Faker::Quote.robin,
-  photo: "https://curatedinterior.com/wp-content/uploads/2021/04/Eero-Aarnio-Ball-Chair-Iconic-Mid-Century-Modern-Chair-Designs.jpg",
   dimensions: "1m x 1m x 1m",
   weight: 1,
   user: andrew
 )
 
-item = Item.create!(
+future_chair = URI.parse("https://curatedinterior.com/wp-content/uploads/2021/04/Eero-Aarnio-Ball-Chair-Iconic-Mid-Century-Modern-Chair-Designs.jpg").open
+  item2.photo.attach(io: future_chair, filename: "future_chair.png", content_type: "image/png")
+  item2.save
+
+item3 = Item.new(
   name: 'Ramen!',
   description: Faker::Quote.robin,
-  photo: "https://m.media-amazon.com/images/I/813yz-8zlFL.jpg",
   dimensions: "1m x 1m x 1m",
   weight: 1,
   user: andrew
 )
+
+ramen = URI.parse("https://m.media-amazon.com/images/I/813yz-8zlFL.jpg").open
+  item3.photo.attach(io: ramen, filename: "ramen.png", content_type: "image/png")
+  item3.save
 
 puts "Items created!"
 
 puts "Creating Requests..."
 Request.create!(
-  item: item,
+  item: item1,
   user: alonzo,
   status: 0
 )
 
 Request.create!(
-  item: item,
+  item: item2,
   user: richard,
   status: 3
 )

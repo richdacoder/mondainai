@@ -1,0 +1,17 @@
+<h1>Requests</h1>
+<div class="d-flex flex-column m-3 gap-3">
+  <% @requests.each do |request| %>
+    <a href="#" class="text-decoration-none">
+      <div class="card d-flex flex-row align-items-center rounded-4 justify-content-between pe-3 overflow-hidden">
+        <%= cl_image_tag request.item.photo.key, height: 50, crop: :fill %>
+        <div class="card-body">
+          <h5 class="card-title"><%= request.item.name %></h5>
+          <p class="card-text"><%= request.user.name %></p>
+        </div>
+        <div>
+          <%= link_to "Chat", request_path(request), class: "btn btn-primary d-flex justify-content-center align-items-center" %>
+        </div>
+      </div>
+    </a>
+  <% end %>
+</div>

@@ -73,6 +73,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem "faker"
-  gem 'fake_picture'
 end
+gem "pg_search"

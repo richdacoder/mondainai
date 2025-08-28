@@ -1,8 +1,23 @@
+
+<h1>Items</h1>
+
+<div class="row justify-content-center">
+  <div class="col-sm-4 my-3">
+    <%= form_with url: items_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control rounded-pill",
+            placeholder: "Search for an item"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-danger rounded-pill" %>
+    <% end %>
+  </div>
+</div>
 <div class="d-flex flex-wrap justify-content-between m-3 row-gap-3">
   <% @items.each do |item| %>
     <a href="#" class="text-decoration-none">
       <div class="card rounded-4 overflow-hidden" style="width: 12rem;">
-        <img src=" <%= item.photo %> " class="card-img-top" alt="...">
+        <img src=" <%= cl_image_tag item.photo.key %> " class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= item.name %></h5>
           <p class="card-text"><%= item.user.name %></p>
