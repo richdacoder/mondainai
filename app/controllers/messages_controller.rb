@@ -6,6 +6,8 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    param.require(:item).permit(:content)
+    params.require(:item).permit(:content)
+    @request = Request.new
+    @request.show
   end
 end
