@@ -5,7 +5,7 @@
     <a href="/items" class="text-primary link-underline-secondary">
       <h1>Mondainai</h1>
     </a>
-    <a href="" class="navbar-link">Messages</a>
+    <%= link_to "Messages", requests_path, class: "navbar-link text-end" %>
   </div>
   <%# Navbar end %>
   <div class="row justify-content-center">
@@ -23,7 +23,7 @@
   <h2 class="page-title">Item Search</h2>
   <div class="d-flex flex-wrap justify-content-between row-gap-3">
     <% @items.each do |item| %>
-      <a href="#" class="text-decoration-none">
+      <%= link_to item_path(item) do %>
         <div class="card rounded-4 overflow-hidden" style="width: 12rem;">
           <img src=" <%= cl_image_tag item.photo.key %> " class="card-img-top" alt="...">
           <div class="card-body">
@@ -31,7 +31,7 @@
             <p class="card-text"><%= item.user.name %></p>
           </div>
         </div>
-      </a>
+      <% end %>
     <% end %>
   </div>
 </div>
