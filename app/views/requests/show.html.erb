@@ -29,14 +29,19 @@
         Hold Item
       </label>
     </div>
+    <%= simple_form_for(@request) do |f| %>
+      <%= f.input :pickup_date, as: :date, html5: true %>
+      <%= f.submit "Confirm", class: "btn btn-danger rounded-pill ms-2" %>
+    <% end %>
     <div class="col-sm-6 my-3">
-      <%= form_with model: [@request, Message.new], local: true, class: "d-flex" do |f| %>
+      <%= simple_form_for [@request, @message] do |f| %>
         <%= f.text_field :content,
         class: "form-control rounded-pill",
         placeholder: "Enter your message"
     %>
         <%= f.submit "Send", class: "btn btn-danger rounded-pill ms-2" %>
       <% end %>
+
     </div>
   </div>
 </div>
