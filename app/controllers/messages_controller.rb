@@ -9,5 +9,6 @@ class MessagesController < ApplicationController
     params.require(:item).permit(:content)
     @request = Request.new
     @request.show
+
   end
 end
