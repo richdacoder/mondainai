@@ -1,6 +1,7 @@
 <div class="container" >
+  <%= render "shared/navbar-back-save" %>
   <div>
-    <h1>Add Item</h1>
+    <h2 class="page-title">Post Item</h2>
     <%= simple_form_for(@item) do |f| %>
       <%= f.input :name, placeholder:"Name" %>
       <%= f.input :description, placeholder:"Add description" %>
