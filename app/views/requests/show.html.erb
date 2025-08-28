@@ -7,14 +7,17 @@
           <%= message.created_at.strftime("%b %e, %l:%M %p") %>
         <% end %>
   <div class="col-sm-4 my-3">
-    <%= form_with url: requests_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
+  <%= simple_form_for :search, url: requests_path, method: :get, html: { class: "d-flex" } do |f| %>
+    <%= f.input :query,
+          input_html: {
+            value: params[:query],
             class: "form-control rounded-pill",
             placeholder: "Enter your message"
-        %>
-      <%= submit_tag "Send", name: "", class: "btn btn-danger rounded-pill" %>
-    <% end %>
-  </div>
+          },
+          label: false
+    %>
+    <%= f.button :submit, "Send", class: "btn btn-danger rounded-pill" %>
+  <% end %>
+</div>
       </div>
     </div>
