@@ -1,23 +1,23 @@
-<div class="container" >
+<div class="container py-5" >
   <div>
-    <h1>Request<h1>
-        <%= @request.user.name %>
-        <% @request.messages.each  do |message|%>
-          <%= message.content %>
-          <%= message.created_at.strftime("%b %e, %l:%M %p") %>
-        <% end %>
-  <div class="col-sm-4 my-3">
-  <%= simple_form_for :search, url: requests_path, method: :get, html: { class: "d-flex" } do |f| %>
-    <%= f.input :query,
-          input_html: {
-            value: params[:query],
+    <h1> <%= @request.user.name %> </h1>
+    <% @request.messages.each  do |message|%>
+      <div class="chat box border rouded d-flex flex-row justify-content-start mb-4" >
+        <div  class="p-3 ms-3" style="border-radius: 15px">
+          <p> <%= message.content %></p>
+          <p> <%= message.created_at.strftime("%b %e, %l:%M %p") %> </p>
+        </div>
+      </div>
+    <% end %>
+    <div class="col-sm-4 my-3">
+      <%= form_with url: requests_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+            params[:query],
             class: "form-control rounded-pill",
             placeholder: "Enter your message"
-          },
-          label: false
-    %>
-    <%= f.button :submit, "Send", class: "btn btn-danger rounded-pill" %>
-  <% end %>
-</div>
-      </div>
+        %>
+        <%= submit_tag "Send", name: "", class: "btn btn-danger rounded-pill" %>
+      <% end %>
     </div>
+  </div>
+</div>
