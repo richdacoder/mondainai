@@ -1,8 +1,8 @@
 <div class="container">
   <%= render "shared/navbar-back" %>
   <div class="d-flex flex-column gap-3">
-    <h2 class="page-title">Requests</h2>
-    <% @requests.each do |request| %>
+    <h2 class="page-title">Requests Received</h2>
+    <% @requests_received.each do |request| %>
       <div class="card d-flex flex-row align-items-center rounded-4 justify-content-between pe-3 overflow-hidden">
         <%= link_to item_path(request.item), class: "d-flex flex-row align-items-center" do %>
           <%= cl_image_tag request.item.photo.key, class: "col-4" %>
