@@ -5,7 +5,10 @@ class ItemsController < ApplicationController
       @items = @items.where(name: params[:query])
     end
   end
-
+  def show
+    @item = Item.find(params[:id])
+    @request = Request.new
+  end
   def new
     @item = Item.new
   end
