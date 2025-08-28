@@ -1,0 +1,42 @@
+<div class="container py-4">
+  <div class="card border-0 shadow rounded-4">
+    <div class="card-header bg-white border-0 py-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="#" class="text-decoration-none text-danger d-flex align-items-center">
+          <i class="fas fa-chevron-left me-2"></i>
+          Back
+        </a>
+        <h1 class="h4 mb-0 text-center flex-grow-1 text-danger fw-bold">Mondainai</h1>
+        <i class="fas fa-list fs-4 text-danger"></i>
+      </div>
+    </div>
+    <div class="card-body p-0 rounded-bottom-4">
+      <div class="position-relative">
+        <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill, class: "img-fluid w-100" %>
+      </div>
+      <div class="p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h4 fw-bold mb-0"><%= @item.name %></h2>
+          <div class="d-flex align-items-center">
+            <div class="mondainai-message-bubble bg-danger text-white rounded-circle d-flex justify-content-center align-items-center">
+              <i class="fas fa-comment-dots fs-4"></i>
+            </div>
+            <span class="ms-2">Message Owner</span>
+          </div>
+        </div>
+        <div class="row g-2 mb-3">
+          <div class="col-6">
+            <h5 class="small text-muted mb-1">Dimensions</h5>
+            <p class="mb-0"><%= @item.dimensions %></p>
+          </div>
+          <div class="col-6">
+            <h5 class="small text-muted mb-1">Weight</h5>
+            <p class="mb-0"><%= @item.weight %></p>
+          </div>
+        </div>
+        <h5 class="small text-muted mb-1">Description</h5>
+        <p class="mb-0"><%= @item.description %></p>
+      </div>
+    </div>
+  </div>
+</div>

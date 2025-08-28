@@ -2,7 +2,10 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
   end
-
+  def show
+    @item = Item.find(params[:id])
+    @request = Request.new
+  end
   def new
     @item = Item.new
   end
