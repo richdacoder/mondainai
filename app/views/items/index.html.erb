@@ -1,5 +1,6 @@
 <div class="container">
   <%= render "shared/navbar-messages" %>
+  <h2 class="page-title">Item Search</h2>
   <div class="row justify-content-center">
     <div class=" mb-3 d-flex">
       <%= form_with url: items_path, method: :get, class: "d-flex" do %>
@@ -12,7 +13,6 @@
       <% end %>
     </div>
   </div>
-  <h2 class="page-title">Item Search</h2>
   <div class="d-flex flex-wrap justify-content-between row-gap-3">
     <% @items.each do |item| %>
       <%= link_to item_path(item) do %>
