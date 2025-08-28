@@ -16,7 +16,7 @@
   <div class="d-flex flex-wrap justify-content-between row-gap-3">
     <% @items.each do |item| %>
       <%= link_to item_path(item) do %>
-        <div class="card rounded-4 overflow-hidden shadow" style="width: 12rem;">
+        <div class="card rounded-4 overflow-hidden shadow" style="width: 11rem;">
           <%= cl_image_tag item.photo.attached? ? item.photo.key : "Frame_61.png", class:"card-img-top" %>
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
@@ -26,10 +26,19 @@
       <% end %>
     <% end %>
   </div>
-  <%= link_to new_item_path do %>
-    <div class="d-flex flex-column justify-content-center w-25 gap-3" width="">
-      <%= image_tag("new-item-icon.svg") %>
-      <p class="mx-auto bg-white text-center rounded-5">Create post</p>
-    </div>
-  <% end %>
+  <div class="fixed-bottom d-flex flex-row justify-content-center mx-auto gap-3">
+    <%= link_to new_item_path, class: "w-25" do %>
+      <div class="d-flex flex-column justify-content-center  px-2 gap-3" width="">
+        <%= image_tag("profile-icon.svg") %>
+        <p class="mx-auto bg-white text-center w-100 rounded-5">Profile</p>
+      </div>
+    <% end %>
+    <%= link_to new_item_path, class: "w-25" do %>
+      <div class="d-flex flex-column justify-content-center px-2 gap-3" width="">
+        <%= image_tag("new-item-icon.svg") %>
+        <p class="mx-auto bg-white text-center rounded-5">Create post</p>
+      </div>
+    <% end %>
+  </div>
+  <div style="height: 20vh;"></div>
 </div>
