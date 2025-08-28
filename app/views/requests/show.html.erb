@@ -23,25 +23,23 @@
       <% end %>
     <% end %>
     <div class="form-check form-switch">
-     <label class="form-check-label" for="checkNativeSwitch" data-toggle-target="label">
-      Hold Item
-    </label>
-    <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch data-action="change->toggle#changeText">
-    
-    <div id="request_form">
-      <%= simple_form_for(@request) do |f| %>
-        <%= f.input :pickup_date, as: :date, html5: true %>
-        <%= f.submit "Confirm", class: "btn btn-danger rounded-pill ms-2" %>
-      <% end %>
+      <label class="form-check-label" for="checkNativeSwitch" data-toggle-target="label">
+        Hold Item
+      </label>
+      <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch data-action="change->toggle#changeText">
+      <div id="request_form">
+        <%= simple_form_for(@request) do |f| %>
+          <%= f.input :pickup_date, as: :date, html5: true %>
+          <%= f.submit "Confirm", class: "btn btn-danger rounded-pill ms-2" %>
+        <% end %>
       </div>
       <div class="col-sm-6 my-3">
         <%= simple_form_for [@request, @message] do |f| %>
           <%= f.text_field :content,
         class: "form-control rounded-pill",
-        placeholder: "Enter your message"
-    %>
+        placeholder: "Enter your message"%>
           <%= f.submit "Send", class: "btn btn-danger rounded-pill ms-2" %>
         <% end %>
       </div>
+    </div>
   </div>
-</div>
