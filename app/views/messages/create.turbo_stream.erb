@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "new_message" do %>
+  <%= render "messages/form", request: @request, message: Message.new %>
+<% end %>

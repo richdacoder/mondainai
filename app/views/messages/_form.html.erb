@@ -1,0 +1,9 @@
+<div id="new_message">
+  <%= simple_form_for [request, message] do |f| %>
+    <%= f.text_field :content,
+        class: "form-control rounded-pill",
+        placeholder: "Enter your message"
+    %>
+    <%= f.submit "Send", class: "btn btn-danger rounded-pill ms-2" %>
+  <% end %>
+</div>

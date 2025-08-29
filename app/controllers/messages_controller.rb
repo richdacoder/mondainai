@@ -5,7 +5,6 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
   if @message.save
-    redirect_to request_path(@request)
   else
     render :new
   end

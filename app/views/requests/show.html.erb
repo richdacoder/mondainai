@@ -2,25 +2,10 @@
   <%= render "shared/navbar-back-menu" %>
   <div>
     <h1> <%= @request.user.name %> </h1>
-    <% @request.messages.each  do |message|%>
-      <% if message.user == current_user %>
-        <div class="d-flex justify-content-end" >
-          <div class="bg-white px-3 py-3 rounded-5">
-            <span> <%= message.content %></span>
-          </div>
-        </div>
-        <div class="d-flex justify-content-end mb-2" >
-          <small class="text-secondary fw-light" > <%= message.created_at.strftime("%b %e, %l:%M %p") %> </small>
-        </div>
-      <% else %>
-        <div class="d-flex justify-content-start" >
-          <div class="bg-dark text-white px-3 py-3 rounded-5">
-            <span> <%= message.content %></span>
-          </div>
-        </div>
-        <div class="d-flex justify-content-start mb-2" >
-          <small class="text-secondary fw-light" > <%= message.created_at.strftime("%b %e, %l:%M %p") %> </small>
-        </div>
+    <%= turbo_stream_from @request %>
+    <div id="messages">
+      <% @request.messages.each  do |message|%>
+        <%= render "messages/message", message: message %>
       <% end %>
     <% end %>
     <div class="form-check form-switch">
