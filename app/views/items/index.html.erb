@@ -3,7 +3,7 @@
   <h2 class="page-title">Item Search</h2>
   <div class="row justify-content-center">
     <div class=" mb-3 d-flex">
-      <%= form_with url: items_path, method: :get, class: "d-flex" do %>
+      <%= form_with url: items_path, method: :get, class: "d-flex flex-row w-100" do %>
         <%= text_field_tag :query,
             params[:query],
             class: "form-control me-2 rounded-3 border-primary bg-white",
