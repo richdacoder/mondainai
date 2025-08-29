@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 633.19 402.38">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 1.24px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: #d6cbb0;
+      }
+
+      .cls-1, .cls-4, .cls-5, .cls-3, .cls-6 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        fill: #c6bba3;
+      }
+
+      .cls-4, .cls-3, .cls-6 {
+        stroke-width: 2.83px;
+      }
+
+      .cls-7 {
+        fill: #c9c2af;
+      }
+
+      .cls-5 {
+        stroke-width: 1.75px;
+      }
+
+      .cls-5, .cls-8, .cls-6 {
+        fill: #e8debf;
+      }
+
+      .cls-9 {
+        fill: #e2dfd9;
+      }
+
+      .cls-10 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <rect class="cls-4" x="81.36" y="92.1" width="395.14" height="238.86"/>
+    <polygon class="cls-1" points="476.5 330.96 551.84 400.96 551.84 162.1 476.5 92.1 476.5 330.96"/>
+    <polygon class="cls-5" points="556.5 30.96 631.84 100.96 551.84 162.1 476.5 92.1 556.5 30.96"/>
+    <rect class="cls-6" x="156.71" y="162.1" width="395.14" height="238.86"/>
+    <polygon class="cls-3" points="621.84 122.62 226.71 122.62 156.71 162.1 551.84 162.1 621.84 122.62"/>
+    <polygon class="cls-5" points="435.42 .87 40.28 .87 81.36 92.1 476.5 92.1 435.42 .87"/>
+    <polygon class="cls-8" points="81.36 330.96 156.71 400.96 156.71 162.1 81.36 92.1 81.36 330.96"/>
+    <polygon class="cls-2" points="1.36 36.96 76.71 106.96 156.71 162.1 81.36 92.1 1.36 36.96"/>
+    <polygon class="cls-7" points="156.71 164.53 75.45 108.52 75.34 108.43 0 38.43 1.36 36.96 77.96 105.4 156.71 162.1 156.71 164.53"/>
+    <polyline class="cls-2" points="156.71 162.1 76.71 106.96 1.36 36.96"/>
+    <g>
+      <rect class="cls-10" x="222.47" y="193.94" width="71.85" height="55.96" transform="translate(-23.47 30.7) rotate(-6.5)"/>
+      <rect class="cls-9" x="227.68" y="198.88" width="16.67" height="51.19" transform="translate(-23.91 28.18) rotate(-6.5)"/>
+      <rect class="cls-9" x="256.43" y="196.49" width="1.09" height="51.19" transform="translate(537.46 413.63) rotate(173.5)"/>
+    </g>
+  </g>
+</svg>

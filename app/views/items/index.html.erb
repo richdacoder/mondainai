@@ -18,9 +18,9 @@
       <%= link_to item_path(item) do %>
         <div class="card rounded-4 overflow-hidden shadow" style="width: 11rem;">
           <% if item.photo.attached? %>
-            <%= cl_image_tag item.photo.key,  class:"card-img-top" %>
+            <%= cl_image_tag item.photo.key,  class:"card-img-top card-image-height object-fit-cover" %>
           <% else %>
-            <%= image_tag 'Frame_61.png', class:"card-img-top" %>
+            <%= image_tag 'default-box.svg', class:"card-img-top p-4 card-image-height" %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
