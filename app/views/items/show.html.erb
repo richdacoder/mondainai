@@ -10,7 +10,7 @@
           <h2 class="h4 fw-bold mb-0"><%= @item.name %></h2>
           <div class="mondainai-message-bubble d-flex flex-column align-items-center">
             <%= image_tag "Frame_61.png", alt: "Message Owner", width: 40 %>
-            <span class="mt-2">Message Owner</span>
+            <%= link_to "Message Owner", item_requests_path(@item), data: {turbo_method: :post},class:"mt-2" %>
           </div>
         </div>
         <div class="row g-2 mb-3">
