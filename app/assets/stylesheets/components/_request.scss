@@ -1,0 +1,7 @@
+#request_form {
+  display: none;
+}
+
+#request_show input.form-check-input:checked + #request_form {
+  display: unset;
+}

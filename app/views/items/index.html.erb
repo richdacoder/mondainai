@@ -6,18 +6,18 @@
       <%= form_with url: items_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
             params[:query],
-            class: "form-control me-2 rounded-3",
+            class: "form-control me-2 rounded-3 border-primary bg-white",
             placeholder: "Search for an item"
         %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary rounded-3" %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary rounded-3 text-white" %>
       <% end %>
     </div>
   </div>
   <div class="d-flex flex-wrap justify-content-between row-gap-3">
     <% @items.each do |item| %>
       <%= link_to item_path(item) do %>
-        <div class="card rounded-4 overflow-hidden" style="width: 12rem;">
-          <img src=" <%= cl_image_tag item.photo.key %> " class="card-img-top" alt="...">
+        <div class="card rounded-4 overflow-hidden shadow" style="width: 11rem;">
+          <%= cl_image_tag item.photo.attached? ? item.photo.key : "Frame_61.png", class:"card-img-top" %>
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
             <p class="card-text"><%= item.user.name %></p>
@@ -26,4 +26,19 @@
       <% end %>
     <% end %>
   </div>
+  <div class="fixed-bottom d-flex flex-row justify-content-center mx-auto gap-3">
+    <%= link_to new_item_path, class: "w-25" do %>
+      <div class="d-flex flex-column justify-content-center  px-2 gap-3" width="">
+        <%= image_tag("profile-icon.svg") %>
+        <p class="mx-auto bg-white text-center w-100 rounded-5">Profile</p>
+      </div>
+    <% end %>
+    <%= link_to new_item_path, class: "w-25" do %>
+      <div class="d-flex flex-column justify-content-center px-2 gap-3" width="">
+        <%= image_tag("new-item-icon.svg") %>
+        <p class="mx-auto bg-white text-center rounded-5">Create post</p>
+      </div>
+    <% end %>
+  </div>
+  <div style="height: 20vh;"></div>
 </div>

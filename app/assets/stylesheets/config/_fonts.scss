@@ -45,3 +45,10 @@ a {
 .navbar-link {
   min-width: 76px;
 }
+
+.underline {
+  border-bottom: 4px solid #26364F;
+  padding-bottom: 3px;
+
+  // text-decoration: underline #26364F 4px !important;
+}
