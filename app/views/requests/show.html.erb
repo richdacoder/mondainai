@@ -7,6 +7,7 @@
       <% @request.messages.each do |message| %>
         <%= render "messages/message", message: message %>
       <% end %>
+    </div>
     <div class="form-check form-switch">
      <label class="form-check-label" for="checkNativeSwitch" data-toggle-target="label">
       Hold Item
@@ -15,15 +16,16 @@
     <div id="request_form">
       <%= simple_form_for(@request) do |f| %>
         <%= f.input :pickup_date, as: :date, html5: true %>
-        <%= f.submit "Confirm", class: "btn btn-danger rounded-pill ms-2" %>
+        <%= f.submit "Confirm", class: "btn btn-danger rounded-pill" %>
       <% end %>
       </div>
-      <div class="col-sm-6 my-3">
-        <%= simple_form_for [@request, @message], html: { class: "d-flex align-items-center" } do |f| %>
+      <div class="my-3 w-100">
+        <%= simple_form_for [@request, @message], html: { class: "d-flex align-items-center w-100" } do |f| %>
           <%= f.text_field :content,
-                class: "form-control rounded-pill",
-                placeholder: "Enter your message" %>
-          <%= f.submit "Send", class: "btn btn-danger rounded-pill ms-2" %>
+        class: "form-control me-2 rounded-3 border-primary bg-white flex-grow-2",
+        placeholder: "Enter your message"
+    %>
+          <%= f.submit "Send", class: "btn btn-primary rounded-3 text-white" %>
         <% end %>
       </div>
     </div>
