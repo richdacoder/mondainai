@@ -31,7 +31,7 @@
     <% end %>
   </div>
   <div class="fixed-bottom d-flex flex-row justify-content-center mx-auto gap-3">
-    <%= link_to new_item_path, class: "w-25" do %>
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "w-25"  do %>
       <div class="d-flex flex-column justify-content-center  px-2 gap-3" width="">
         <%= image_tag("profile-icon.svg") %>
         <p class="mx-auto bg-white text-center w-100 rounded-5">Profile</p>
