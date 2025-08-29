@@ -8,4 +8,23 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @message = Message.new
   end
+
+  def create
+    @item = Item.find(params[:item_id])
+    @request = Request.new
+
+    @request.item = @item
+    @request.user = current_user
+    @request.status = :pending
+
+    if @request.save
+      # Redirect to the request's show page (or wherever appropriate) upon successful creation
+      redirect_to request_path(@request), notice: 'Request was successfully sent.'
+    else
+      # Re-render the new form if validation fails
+      render "items/show", status: :unprocessable_entity
+      @item
+    end
+
+  end
 end
