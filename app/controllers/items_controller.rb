@@ -11,6 +11,10 @@ class ItemsController < ApplicationController
   end
   def new
     @item = Item.new
+    @photo = item_params.photo
+    if @photo.valid?
+      @photo.with_instructions(item.build_prompt).ask(@item.content)
+    end
   end
 
   def create

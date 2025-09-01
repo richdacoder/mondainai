@@ -14,4 +14,10 @@ class Item < ApplicationRecord
     using: {
     tsearch: { prefix: true }
   }
+
+  def build_prompt
+    prompt = <<-PROMPT
+      This item is for a free item giveaway application similar to craigslist. It should take this image of a #{ item.name }, find the main #{ item.name } shown, and in 280 characters give a description of the #{ item.name } for someone who would want it. The description should give helpful details. If the model is not known, the description should not mention it.
+    PROMPT
+  end
 end
