@@ -7,6 +7,6 @@ class Message < ApplicationRecord
   private
 
   def broadcast_append_to_request
-    broadcast_append_to request, target: "messages", partial: "messages/message", locals: { message: self, current_user: self.user }
+    broadcast_append_to request, target: "messages", partial: "messages/message", locals: { message: self }
   end
 end
