@@ -11,10 +11,20 @@ class ItemsController < ApplicationController
   end
   def new
     @item = Item.new
-    @photo = item_params.photo
-    if @photo.valid?
-      @photo.with_instructions(item.build_prompt).ask(@item.content)
-    end
+
+  end
+
+  def generate_description
+    @item = Item.new(item_params)
+    prompt = @item.build_prompt
+    chat = RubyLLM.chat
+    response = chat.ask(prompt)
+    puts response.content
+    render json: { generatedDescription: response.content }
+    #get name and image file from parameters
+    #send name and image with prompt to LLM
+    #Receive answer from LLM with generated description
+
   end
 
   def create
