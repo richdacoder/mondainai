@@ -8,7 +8,7 @@
         <%= render "messages/message", {message: message, current_user: @current_user} %>
       <% end %>
     </div>
-    <div class="form-check form-switch">
+    <div class="form-check form-switch" data-controller="toggle">
       <label class="form-check-label" for="checkNativeSwitch" data-toggle-target="label">
         Hold Item
       </label>
