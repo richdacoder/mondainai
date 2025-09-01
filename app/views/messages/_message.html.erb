@@ -1,7 +1,12 @@
 <div data-controller="set-sender" data-sender-id="<%= message.user.id %>">
   <div class="d-flex" data-set-sender-target="container">
     <div class="px-3 py-3 rounded-5" data-set-sender-target="bubble">
-      <span> <%= message.content %></span>
+      <%# info: current_user is being passed in controller because websockets are missing Warden from devise %>
+      <% if message.user != current_user && message.translated_content %>
+        <span> <%= message.translated_content %></span>
+      <% else  %>
+        <span> <%= message.content %></span>
+      <% end %>
     </div>
   </div>
   <div class="d-flex mb-2" data-set-sender-target="container" >

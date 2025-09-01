@@ -2,10 +2,11 @@
   <%= render "shared/navbar-back" %>
   <div>
     <h2 class="page-title">Post Item</h2>
-    <%= simple_form_for(@item) do |f| %>
+    <%= simple_form_for(@item, data: { controller: "generate-description"}) do |f| %>
       <%= f.input :name, placeholder:"Name" %>
-      <%= f.input :description, placeholder:"Add description" %>
       <%= f.input :photo, as: :file, placeholder:"Add photo"%>
+      <button class="btn btn-primary" data-action="click->generate-description#generate">Submit</button>
+      <%= f.input :description, placeholder:"Add description", input_html: {data: {"generate-description-target":"description"} } %>
       <%= f.input :available_date, as: :date, html5: true %>
       <%= f.input :deadline_date, as: :date, html5: true %>
       <%= f.input :dimensions %>
