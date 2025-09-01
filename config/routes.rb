@@ -9,6 +9,13 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :new, :create, :show] do
     resources :requests, only: [:new, :create]
+
+    collection do
+
+      post :generate_description
+
+    end
+
   end
 
   resources :requests, only: [:index, :show, :update, :edit] do
