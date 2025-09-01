@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     prompt = @item.build_prompt
     chat = RubyLLM.chat
-    response = chat.ask(prompt)
+    response = chat.ask(prompt, with: item_params[:photo].tempfile.path)
     puts response.content
     render json: { generatedDescription: response.content }
     #get name and image file from parameters
