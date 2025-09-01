@@ -1,9 +1,11 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Noto+Sans+JP:wght@100..900&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Noto Sans JP", "Helvetica", "sans-serif";
+$headers-font: "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -14,3 +16,39 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+// $display-font-sizes: (
+//   1: 7rem,
+// );
+
+h1 {
+  font-size: 32px !important;
+  font-family: "Cherry Swash" !important;
+  margin: 0 !important;
+}
+
+h2 {
+  font-size: 24px !important;
+  color: $body-font !important;
+}
+
+.page-title {
+  font-family: "Cherry Swash";
+}
+
+a {
+  text-decoration: none !important;
+  font-weight: bold;
+  color: #26364F !important;
+}
+
+.navbar-link {
+  min-width: 76px;
+}
+
+.underline {
+  border-bottom: 4px solid #26364F;
+  padding-bottom: 3px;
+
+  // text-decoration: underline #26364F 4px !important;
+}
