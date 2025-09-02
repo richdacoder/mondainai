@@ -18,13 +18,18 @@
     <% @requests_sent.each do |request| %>
       <div class="card d-flex flex-row align-items-center rounded-4 justify-content-between pe-3 border-body-color overflow-hidden shadow">
         <%= link_to item_path(request.item), class: "d-flex flex-row align-items-center" do %>
-          <%= cl_image_tag request.item.photo.key, class: "col-4" %>
+          <% if request.item.photo.attached? %>
+            <%= cl_image_tag request.item.photo.key, class: "col-4" %>
+          <% else %>
+            <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= request.item.name %></h5>
             <p class="card-text"><%= request.user.name %></p>
+            <p class="card-text"><%= request.status %></p>
           </div>
         <% end %>
-        <%= link_to "Chat", request_path(request), class: "btn btn-primary rounded-3 text-white" %>
+        <%= link_to "Chat", request_path(request), class: "btn btn-primary rounded-3 text-white me-2" %>
       </div>
     <% end %>
   </div>

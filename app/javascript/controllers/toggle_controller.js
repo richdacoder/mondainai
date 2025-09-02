@@ -12,6 +12,8 @@ export default class extends Controller {
     this.labelTarget.innerText = "Hold Item"
   }
   }
+
+
   connect() {
     console.log("hello")
   }
