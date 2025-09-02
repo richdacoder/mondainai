@@ -7,7 +7,8 @@ class ItemsController < ApplicationController
   end
   def show
     @item = Item.find(params[:id])
-    @request = Request.new
+    @request = current_user.requests.find_by(item: @item)
+    @request ||= Request.new
   end
   def new
     @item = Item.new
