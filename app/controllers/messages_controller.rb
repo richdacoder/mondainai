@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     item_user_language = @request.item.user.preferred_language
 
 
-    if @message.valid? && request_user_language != @item_user_language
+    if @message.valid? && request_user_language != item_user_language
 
       @translated_language = @message.user == @request.user ? item_user_language : request_user_language
 
