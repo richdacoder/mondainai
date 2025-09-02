@@ -1,6 +1,11 @@
 class RequestsController < ApplicationController
   def index
-    @requests_received = current_user.requests_as_owner
+    @requests_received = current_user.requests_as_owner.map do |request|
+      request_unread = request.messages.select {|message| message.user != current_user}.any? { |message| !message.read }
+
+      {request: request, request_unread?: request_unread}
+    end
+
     @requests_sent = current_user.requests
   end
 
@@ -25,6 +30,5 @@ class RequestsController < ApplicationController
       render "items/show", status: :unprocessable_entity
       @item
     end
-
   end
 end

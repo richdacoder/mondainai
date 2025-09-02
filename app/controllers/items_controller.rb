@@ -1,14 +1,20 @@
 class ItemsController < ApplicationController
   def index
+    @unread = is_unread?(current_user.requests_as_owner) || is_unread?(current_user.requests)
+
     @items = Item.all
     if params[:query].present?
       @items = @items.where(name: params[:query])
     end
   end
+
   def show
+    @unread = is_unread?(current_user.requests_as_owner) || is_unread?(current_user.requests)
+
     @item = Item.find(params[:id])
     @request = Request.new
   end
+
   def new
     @item = Item.new
 
@@ -41,5 +47,11 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :description, :photo, :status, :available_date, :deadline_date, :dimensions, :weight)
+  end
+
+  def is_unread?(requests)
+    requests.any? do |request|
+      request.messages.select {|message| message.user != current_user}.any? { |message| !message.read }
+    end
   end
 end
