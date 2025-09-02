@@ -23,6 +23,11 @@
                 <p class="mb-0">Message Owner</p>
               <% end %>
             <% end %>
+            <% if @item.photo.attached? %>
+              <%= cl_image_tag @item.photo.key,  class:"card-img-top card-image-height object-fit-cover" %>
+            <% else %>
+              <%= image_tag 'default-box.svg', class:"card-img-top p-4 card-image-height" %>
+            <% end %>
           </div>
         </div>
         <div class="row g-2 mb-3">
