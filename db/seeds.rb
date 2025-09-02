@@ -13,7 +13,8 @@ alonzo = User.create!(
   email: 'alonzo@email.com',
   password: "123456",
   name: 'Alonzo',
-  phone_number: Faker::PhoneNumber.phone_number
+  phone_number: Faker::PhoneNumber.phone_number,
+    preferred_language: 'japanese',
 )
 
 andrew = User.create!(
