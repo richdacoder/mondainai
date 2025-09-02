@@ -2,6 +2,7 @@ require "faker"
 require "open-uri"
 
 puts "Cleaning database..."
+Messages.destroy_all
 Request.destroy_all
 Item.destroy_all
 User.destroy_all

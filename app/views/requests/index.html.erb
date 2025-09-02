@@ -2,16 +2,21 @@
   <%= render "shared/navbar-back" %>
   <div class="d-flex flex-column gap-3">
     <h2 class="page-title">Requests Received</h2>
-    <% @requests_received.each do |request| %>
+    <% @requests_received.each do | request_hash| %>
+      <%= request_hash[:request_unread?] %>
       <div class="card d-flex flex-row align-items-center rounded-4 justify-content-between pe-3 border-body-color overflow-hidden shadow">
-        <%= link_to item_path(request.item), class: "d-flex flex-row align-items-center" do %>
-          <%= cl_image_tag request.item.photo.key, class: "col-4" %>
+        <%= link_to item_path(request_hash[:request].item), class: "d-flex flex-row align-items-center" do %>
+          <%= cl_image_tag request_hash[:request].item.photo.key, class: "col-4" %>
           <div class="card-body">
-            <h5 class="card-title"><%= request.item.name %></h5>
-            <p class="card-text"><%= request.user.name %></p>
+            <h5 class="card-title
+              <% if request_hash[:request_unread?] %>
+              fw-bold
+              <% end %>
+            "><%= request_hash[:request].item.name %></h5>
+            <p class="card-text"><%= request_hash[:request].user.name %></p>
           </div>
         <% end %>
-        <%= link_to "Chat", request_path(request), class: "btn btn-primary rounded-3 text-white" %>
+        <%= link_to "Chat", request_path(request_hash[:request]), class: "btn btn-primary rounded-3 text-white" %>
       </div>
     <% end %>
     <h2 class="page-title">Requests Sent</h2>
