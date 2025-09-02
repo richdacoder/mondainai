@@ -13,10 +13,12 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     # Setting unread messages to read
     # Loop through each message in specific request
-    @request.messages.each { |message| message.read = true }
-    raise
     # For each unread, set to read
     @message = Message.new
+    @request.messages.each do |message|
+      message.read = true
+      message.save
+    end
   end
 
   def create
