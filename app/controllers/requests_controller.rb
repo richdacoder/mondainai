@@ -5,7 +5,6 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @current_user = current_user
     @request = Request.find(params[:id])
     @message = Message.new
   end
