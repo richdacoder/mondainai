@@ -23,7 +23,7 @@ class RequestsController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @request = Request.new
+    @request = Request.new(request_params)
 
     @request.item = @item
     @request.user = current_user
@@ -37,5 +37,19 @@ class RequestsController < ApplicationController
       render "items/show", status: :unprocessable_entity
       @item
     end
+  end
+
+  def update
+    @request = Request.find(params[:id])
+    
+    if @request.update(request_params)
+      # Redirect to the request's show page (or wherever appropriate) upon successful creation
+      redirect_to request_path(@request), notice: 'Request was successfully sent.'
+    end
+  end
+
+  private
+  def request_params
+    params.require(:request).permit(:pickup_date)
   end
 end
