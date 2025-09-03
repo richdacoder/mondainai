@@ -6,7 +6,14 @@
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
-
+// @import "flatpickr/dist/themes/material_red.css";
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
