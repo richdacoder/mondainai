@@ -3,7 +3,11 @@
   <div class="card border-0 shadow rounded-4">
     <div class="card-body p-0 rounded-bottom-4">
       <div class="position-relative">
-        <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill, class: "img-fluid w-100" %>
+        <% if @item.photo.attached? %>
+          <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill, class: "img-fluid w-100" %>
+        <% else %>
+          <%= image_tag 'default-box.svg', class:"card-img-top p-4 card-image-height" %>
+        <% end %>
       </div>
       <div class="p-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -22,11 +26,6 @@
                 <%= image_tag "message-icon.svg", alt: "Message Owner", width: 40 %>
                 <p class="mb-0">Message Owner</p>
               <% end %>
-            <% end %>
-            <% if @item.photo.attached? %>
-              <%= cl_image_tag @item.photo.key,  class:"card-img-top card-image-height object-fit-cover" %>
-            <% else %>
-              <%= image_tag 'default-box.svg', class:"card-img-top p-4 card-image-height" %>
             <% end %>
           </div>
         </div>

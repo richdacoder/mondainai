@@ -1,36 +1,53 @@
-<h2>Welcome <%= resource_name.to_s.humanize %>!</h2>
-<% if current_user.profile_picture.attached? %>
-  <%= cl_image_tag current_user.profile_picture.key,  class:"card-img-top card-image-height object-fit-cover" %>
-<% else %>
-  <%= image_tag 'default-box.svg', class:"card-img-top p-4 card-image-height" %>
-<% end %>
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-    <%= f.input :name, placeholder:"Display Name"%>
-    <%= f.input :profile_picture, as: :file, placeholder:"Add photo"%>
-    <%= f.input :address, placeholder:"Address"%>
-    <%= f.input :password,
+<div class="container mt-4">
+  <h2>Welcome <%= resource_name.to_s.humanize %>!</h2>
+  <% if current_user.profile_picture.attached? %>
+    <%= cl_image_tag current_user.profile_picture.key,
+      class: "rounded-circle d-block mx-auto profile-pic",
+      alt: "Profile Picture" %>
+  <% else %>
+    <%= image_tag 'default-box.svg',
+      class: "rounded-circle d-block mx-auto profile-pic",
+      alt: "Default Profile Picture" %>
+  <% end %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+      <%= f.input :name, placeholder:"Display Name" %>
+      <div class="d-flex row g-3" >
+        <div class="col-md-6 col-sm-6" >
+          <%= f.input :profile_picture, as: :file, placeholder:"Add photo" %>
+        </div>
+        <div class="col-md-6 col-sm-6" >
+          <%= f.input :address, placeholder:"Address" %>
+        </div>
+      </div>
+      <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+      <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
+      <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+      <div class="form-actions">
+        <%= f.button :submit, "Update" %>
+        <%= link_to "Sign Out", destroy_user_session_path %>
+      </div>
+    <% end %>
+    <h3>Deactivate My Account</h3>
+    <div>
+      Unsatisfied?
+      <%= button_to "Cancel my account", registration_path(resource_name),
+        data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },
+        method: :delete %>
+    </div>
+    <%= link_to "Back", :back %>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-    <%= link_to "Sign Out",  destroy_user_session_path %>
-  </div>
-<% end %>
-<h3>Deactivate My Account</h3>
-<div>Unsatisfied? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-<%= link_to "Back", :back %>
+</div>
