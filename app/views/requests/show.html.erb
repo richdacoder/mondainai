@@ -19,8 +19,8 @@
       <div id="request_form">
         <%# CONFIRM BUTTON %>
         <%= simple_form_for(@request) do |f| %>
-          <%= f.input :pickup_date, as: :date, html5: true %>
-          <%= f.submit "Confirm", class: "btn btn-danger rounded-pill" %>
+          <%= f.input :pickup_date, as: :date, html5: true, wrapper_html: { class: "bg-white border-primary" } %>
+          <%= f.submit "Confirm", class: "btn btn-primary rounded-3 text-white d-flex flex-row me-2" %>
         <% end %>
       </div>
       <%# TEXT INPUT AND SEND BUTTON %>
