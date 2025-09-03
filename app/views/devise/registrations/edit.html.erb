@@ -1,5 +1,6 @@
 <div class="container mt-4">
   <h2>Welcome <%= resource_name.to_s.humanize %>!</h2>
+  <%# PROFILE PICTURE %>
   <% if current_user.profile_picture.attached? %>
     <%= cl_image_tag current_user.profile_picture.key,
       class: "rounded-circle d-block mx-auto profile-pic",

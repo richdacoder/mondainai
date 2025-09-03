@@ -15,21 +15,10 @@
                 wrapper_html: { class: "text-center"} %>
         </div>
         <%= f.button :submit, "Select Pickup Date",
-            class: "btn btn-danger text-white mt-3" %>
+            class: "btn btn-primary text-white mt-3" %>
         <p class="mt-3 text-success fw-bold" data-pickup-target="message"></p>
       </div>
     <% end %>
-    <!-- <div class="form-check form-switch" data-controller="toggle">
-      <label class="form-check-label" for="checkNativeSwitch" data-toggle-target="label">
-        Hold Item
-      </label>
-      <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch data-action="change->toggle#changeText">
-      <div id="request_form">
-        <%= simple_form_for(@request) do |f| %>
-          <%= f.input :pickup_date, as: :date, html5: true %>
-          <%= f.submit "Confirm", class: "btn btn-danger rounded-pill" %>
-        <% end %>
-      </div> -->
     <div id="messages">
       <% @request.messages.each do |message| %>
         <%= render "messages/message", {message: message} %>
