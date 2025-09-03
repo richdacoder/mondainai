@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
 
       I speak #{@message.user.preferred_language} and i do not understand #{@translated_language}. I am writing a message.
 
-      Translate this #{@message.content} from #{@message.user.preferred_language} to #{@translated_language}
+      Translate this content within the quotes '#{@message.content}', from #{@message.user.preferred_language} to #{@translated_language}
 
       Return an accurate translated text of only the #{@translated_language}"
       response = chat.ask(prompt)

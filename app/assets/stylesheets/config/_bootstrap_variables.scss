@@ -29,3 +29,31 @@ $border-radius-xxl:           1rem;
 .card-image-height {
   height: 11rem;
 }
+
+.chat-current-user {
+  color: white;
+  background-color: $font-color;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px 8px 0;
+  max-width: 50vw;
+}
+
+.chat-current-user p {
+  margin: 0;
+}
+
+.chat-other-user {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px 8px 8px 0;
+  border: 1px solid $font-color;
+  max-width: 50vw;
+}
+
+.chat-other-user p {
+  margin: 0;
+}
