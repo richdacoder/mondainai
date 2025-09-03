@@ -3,12 +3,15 @@
   <div>
     <h1><%= @request.user.name %></h1>
     <%= turbo_stream_from @request %>
-    <div id="messages">
-      <% @request.messages.each do |message| %>
-        <%= render "messages/message", {message: message} %>
-      <% end %>
-    </div>
-    <div class="form-check form-switch" data-controller="toggle">
+    <%= simple_form_for(@request) do |f| %>
+      <div class="d-flex flex-column align-items-center">
+      <div class="form-group" data-controller="flatpickr">
+      <%= f.input :pickup_date, as: :date, input_html: {data: { controller: "flatpickr" } } %>
+      </div>
+      <%= f.button :submit, "Select Pickup Date", class: "btn btn-danger text-white" %>
+      </div>
+    <% end %>
+    <!-- <div class="form-check form-switch" data-controller="toggle">
       <label class="form-check-label" for="checkNativeSwitch" data-toggle-target="label">
         Hold Item
       </label>
@@ -18,16 +21,21 @@
           <%= f.input :pickup_date, as: :date, html5: true %>
           <%= f.submit "Confirm", class: "btn btn-danger rounded-pill" %>
         <% end %>
-      </div>
-      <div class="my-3 w-100">
-        <%= simple_form_for [@request, @message], html: { class: "d-flex align-items-center w-100" } do |f| %>
-          <%= f.text_field :content,
+      </div> -->
+    <div id="messages">
+      <% @request.messages.each do |message| %>
+        <%= render "messages/message", {message: message} %>
+      <% end %>
+    </div>
+    <div class="my-3 w-100">
+      <%= simple_form_for [@request, @message], html: { class: "d-flex align-items-center w-100" } do |f| %>
+        <%= f.text_field :content,
         class: "form-control me-2 rounded-3 border-primary bg-white flex-grow-2",
         placeholder: "Enter your message"
     %>
-          <%= f.submit "Send", class: "btn btn-primary rounded-3 text-white" %>
-        <% end %>
-      </div>
+        <%= f.submit "Send", class: "btn btn-primary rounded-3 text-white" %>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
