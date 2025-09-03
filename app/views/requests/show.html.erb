@@ -5,29 +5,12 @@
     <%= turbo_stream_from @request %>
     <%= simple_form_for(@request) do |f| %>
       <div class="d-flex flex-column align-items-center">
-      <div class="form-group" data-controller="flatpickr">
-      <%= f.input :pickup_date, as: :date, input_html: {data: { controller: "flatpickr" } } %>
-      </div>
-      <%= f.button :submit, "Select Pickup Date", class: "btn btn-danger text-white" %>
+        <div class="form-group" data-controller="flatpickr">
+          <%= f.input :pickup_date, as: :date, input_html: {data: { controller: "flatpickr" } } %>
+        </div>
+        <%= f.button :submit, "Select Pickup Date", class: "btn btn-danger text-white" %>
       </div>
     <% end %>
-    <!-- <div class="form-check form-switch" data-controller="toggle">
-      <label class="form-check-label" for="checkNativeSwitch" data-toggle-target="label">
-        Hold Item
-      </label>
-      <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch data-action="change->toggle#changeText">
-      <div id="request_form">
-        <%# CONFIRM BUTTON %>
-        <%= simple_form_for(@request) do |f| %>
-          <%= f.input :pickup_date, as: :date, html5: true, wrapper_html: { class: "bg-white border-primary" } %>
-          <%= f.submit "Confirm", class: "btn btn-primary rounded-3 text-white d-flex flex-row me-2" %>
-        <% end %>
-      </div>
-      <%# TEXT INPUT AND SEND BUTTON %>
-      <div class="my-3 w-100">
-        <%= simple_form_for [@request, @message], html: { class: "d-flex align-items-center w-100" } do |f| %>
-          <%= f.text_field :content,
-      </div> -->
     <div id="messages">
       <% @request.messages.each do |message| %>
         <%= render "messages/message", {message: message} %>
