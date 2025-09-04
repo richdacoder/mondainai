@@ -23,7 +23,7 @@ class RequestsController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @request = Request.new(request_params)
+    @request = Request.new
 
     @request.item = @item
     @request.user = current_user
