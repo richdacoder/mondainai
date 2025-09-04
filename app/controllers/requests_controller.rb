@@ -49,6 +49,12 @@ class RequestsController < ApplicationController
       @request.update(request_params)
     end
 
+
+      if @request.pickup_date
+        @message = @request.messages.new({content: "Pickup date has been set for #{@request.pickup_date}"})
+        @message.user = current_user
+        @message.save
+      end
       # Redirect to the request's show page (or wherever appropriate) upon successful creation
     redirect_to request_path(@request), notice: 'Request was successfully sent.'
   end

@@ -30,6 +30,8 @@ richard = User.create!(
   name: 'Richard',
   phone_number: Faker::PhoneNumber.phone_number,
   preferred_language: 'japanese',
+  address: 'le wagon, tokyo'
+
 )
 
 yuichi = User.create!(
@@ -47,6 +49,7 @@ puts "Creating items..."
 item1 = Item.new(
   name: 'Old Chair',
   description: Faker::Quote.robin,
+  location: "meguro",
   dimensions: "1m x 1m x 1m",
   weight: 1,
   user: andrew
@@ -59,6 +62,7 @@ item1 = Item.new(
 item2 = Item.new(
   name: 'New Chair!',
   description: Faker::Quote.robin,
+  location: "shibuya",
   dimensions: "1m x 1m x 1m",
   weight: 1,
   user: andrew
@@ -71,6 +75,7 @@ future_chair = URI.parse("https://curatedinterior.com/wp-content/uploads/2021/04
 item3 = Item.new(
   name: 'Ramen!',
   description: Faker::Quote.robin,
+  location: "shinagawa",
   dimensions: "1m x 1m x 1m",
   weight: 1,
   user: andrew
