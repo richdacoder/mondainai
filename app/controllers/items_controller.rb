@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :photo, :status, :available_date, :deadline_date, :dimensions, :weight)
+    params.require(:item).permit(:name, :description, :photo, :status, :available_date, :deadline_date, :dimensions, :weight, :location)
   end
 
   def is_unread?(requests)
