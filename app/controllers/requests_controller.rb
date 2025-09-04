@@ -44,6 +44,7 @@ class RequestsController < ApplicationController
     if params["confirm_time"]
       time = params["request"]["pickup_date"]
       @request.pickup_date = @request.pickup_date.change(hour: time)
+      @request.status = 1
       @request.save
     else
       @request.update(request_params)
