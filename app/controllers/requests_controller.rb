@@ -41,8 +41,9 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    
+
     if @request.update(request_params)
+
       # Redirect to the request's show page (or wherever appropriate) upon successful creation
       redirect_to request_path(@request), notice: 'Request was successfully sent.'
     end
@@ -50,6 +51,9 @@ class RequestsController < ApplicationController
 
   private
   def request_params
-    params.require(:request).permit(:pickup_date)
+    # params["request"]["available_times"] = params["request"]["available_times"].drop(0)
+    params["request"]["available_times"] = params["request"]["available_times"].compact_blank
+    params.require(:request).permit(:pickup_date, available_times:[])
+
   end
 end
