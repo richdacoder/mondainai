@@ -14,23 +14,20 @@
                 input_html: { data: { controller: "flatpickr" } },
                 wrapper_html: { class: "text-center"} %>
         </div>
+        <%= f.input :available_times, collection: 8..21, as: :check_boxes  %>
         <%= f.button :submit, "Select Pickup Date",
             class: "btn btn-primary text-white mt-3" %>
         <p class="mt-3 text-success fw-bold" data-pickup-target="message"></p>
       </div>
     <% end %>
-    <%# Available times checkboxes %>
+    <%# Available times radio buttons %>
     <%= simple_form_for(@request) do |f| %>
-      <%= f.input :available_times, collection: 8..21, as: :check_boxes  %>
-      <%= f.submit "Select available time slots", class: "btn btn-primary rounded-3 text-white" %>
+      <%= f.input :pickup_date, label: "Select pickup time", collection: @request.available_times, as: :radio_buttons %>
+      <%= f.submit "Confirm pickup time", class: "btn btn-primary rounded-3 text-white" %>
     <% end %>
     <div id="messages">
       <% @request.messages.each do |message| %>
         <%= render "messages/message", {message: message} %>
-      <% end %>
-      <%= simple_form_for(@request) do |f| %>
-        <%= f.input :available_times, collection: @request.available_times, as: :radio_buttons %>
-        <%= f.submit "Select available time slots", class: "btn btn-primary rounded-3 text-white" %>
       <% end %>
     </div>
     <div class="my-3 w-100">
