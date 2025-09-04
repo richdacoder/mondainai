@@ -14,7 +14,7 @@ alonzo = User.create!(
   password: "123456",
   name: 'Alonzo',
   phone_number: Faker::PhoneNumber.phone_number,
-    preferred_language: 'japanese',
+    preferred_language: 'english',
 )
 
 andrew = User.create!(
@@ -29,7 +29,7 @@ richard = User.create!(
   password: "123456",
   name: 'Richard',
   phone_number: Faker::PhoneNumber.phone_number,
-  preferred_language: 'japanese',
+  preferred_language: 'english',
   address: 'le wagon, tokyo'
 
 )
@@ -38,6 +38,7 @@ yuichi = User.create!(
   email: 'yuichi@email.com',
   password: "123456",
   name: 'Yuichi',
+  preferred_language:'japanese',
   phone_number: Faker::PhoneNumber.phone_number
 )
 
