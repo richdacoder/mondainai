@@ -1,6 +1,6 @@
 <div class="container py-4">
   <%= render "shared/navbar-back-messages" %>
-  <div class="card border-0 shadow rounded-4">
+  <div class="card border-0 shadow-sm rounded-4">
     <div class="card-body p-0 rounded-bottom-4">
       <div class="position-relative">
         <% if @item.photo.attached? %>
@@ -10,26 +10,32 @@
         <% end %>
       </div>
       <div class="p-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="h4 fw-bold mb-0"><%= @item.name %></h2>
-          <div class="mondainai-message-bubble d-flex flex-column align-items-center">
+        <div class="d-flex justify-content-between">
+          <h2 class="fw-bold mb-0 align-content-center" ><%= @item.name %></h2>
+          <div class="d-flex flex-column align-items-center" style="width: min-content">
             <% if @request.new_record? %>
               <%= link_to item_requests_path(@item),
                           data: { turbo_method: :post },
                           class: "d-flex flex-column align-items-center mt-2" do %>
                 <%= image_tag "message-icon.svg", alt: "Message Owner", width: 40 %>
-                <p class="mb-0">Message Owner</p>
+                <span class="mb-0 text-center fw-normal">Message <%= @item.user.name.capitalize %></span>
               <% end %>
             <% else %>
               <%= link_to request_path(@request),
                           class: "d-flex flex-column align-items-center mt-2" do %>
                 <%= image_tag "message-icon.svg", alt: "Message Owner", width: 40 %>
-                <p class="mb-0">Message Owner</p>
+                <span class="mb-0 text-center fw-normal">Message <%= @item.user.name.capitalize %></span>
               <% end %>
             <% end %>
           </div>
         </div>
+        <h5 class="small text-muted mb-1">Description</h5>
+        <p><%= @item.description %></p>
         <div class="row g-2 mb-3">
+          <div class="col-6">
+            <h5 class="small text-muted mb-1">Location</h5>
+            <p class="mb-0"><%= @item.location %></p>
+          </div>
           <div class="col-6">
             <h5 class="small text-muted mb-1">Dimensions</h5>
             <p class="mb-0"><%= @item.dimensions %></p>
@@ -39,8 +45,11 @@
             <p class="mb-0"><%= @item.weight %></p>
           </div>
         </div>
-        <h5 class="small text-muted mb-1">Description</h5>
-        <p class="mb-0"><%= @item.description %></p>
+        <%= link_to "https://www.google.com/maps/preview?q=#{@item.location}",
+    class:"btn btn-primary text-white mt-3", target: :_blank  do %>
+          <i class="fa-solid fa-location-dot me-2"></i>
+          Google maps location
+        <% end %>
       </div>
     </div>
   </div>

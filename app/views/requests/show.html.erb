@@ -35,6 +35,8 @@
       <h2>Pickup date is: <%= @request.pickup_date.strftime('%D at %H:%M') %></h2>
     <% end %>
     <%# GOOGLE MAPS LOCATION %>
+    <%= link_to "Google maps location", "https://www.google.com/maps/preview?q=#{@request.item.location}",
+    class:"btn btn-primary text-white mt-3", target: :_blank %>
     <div id="messages">
       <% @request.messages.each do |message| %>
         <%= render "messages/message", {message: message} %>
