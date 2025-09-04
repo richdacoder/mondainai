@@ -12,8 +12,11 @@
                 label: "Select Your Pickup Date",
                 as: :string,
                 input_html: { data: { controller: "flatpickr" } },
-                wrapper_html: { class: "text-center"} %>
+                wrapper_html: { class: "text-center disabled"} %>
         </div>
+        <% if @request.pickup_date %>
+          <p> <%= @request.user.name %>! The pickup date is on <%= @request.pickup_date %>!</p>
+        <% end %>
 
         <%= f.input :available_times, collection: 8..21, as: :check_boxes  %>
         <%# SELECT PICK UP DATE BUTTON %>
