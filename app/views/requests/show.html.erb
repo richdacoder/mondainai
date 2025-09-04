@@ -11,8 +11,8 @@
             <%= f.input :pickup_date,
                 label: "Select Your Pickup Date",
                 as: :string,
-                input_html: { data: { controller: "flatpickr" } },
-                wrapper_html: { class: "justify-content-center text-center disabled"} %>
+                input_html: { data: { controller: "flatpickr", flatpickr_min_date_value: @request.item.available_date, flatpickr_max_date_value: @request.item.deadline_date} },
+                wrapper_html: { class: "text-center disabled"} %>
           </div>
           <% if @request.pickup_date %>
             <p> <%= @request.user.name %>! The pickup date is on <%= @request.pickup_date %>!</p>
@@ -38,6 +38,8 @@
       <h2>Pickup date is: <%= @request.pickup_date.strftime('%D at %H:%M') %></h2>
     <% end %>
     <%# GOOGLE MAPS LOCATION %>
+    <%= link_to "Google maps location", "https://www.google.com/maps/preview?q=#{@request.item.location}",
+    class:"btn btn-primary text-white mt-3", target: :_blank %>
     <div id="messages">
       <% @request.messages.each do |message| %>
         <%= render "messages/message", {message: message} %>
