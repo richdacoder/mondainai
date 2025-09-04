@@ -57,6 +57,16 @@ class RequestsController < ApplicationController
 
   private
   def request_params
-    params.require(:request).permit(:pickup_date)
+    # params["request"]["available_times"] = params["request"]["available_times"].drop(0)
+    available_times_array = params["request"]["available_times"]
+    if available_times_array
+      available_times_array = available_times_array.compact_blank
+    else
+      time = params["request"]["pickup_date"]
+      date = @request.pickup_date.change(hour: time)
+      raise
+    end
+    params.require(:request).permit(:pickup_date, available_times:[])
+
   end
 end
