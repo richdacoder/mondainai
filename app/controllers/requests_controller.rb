@@ -27,7 +27,7 @@ class RequestsController < ApplicationController
 
     @request.item = @item
     @request.user = current_user
-    @request.status = :pending
+    @request.status = :Pending
 
     if @request.save
       # Redirect to the request's show page (or wherever appropriate) upon successful creation
