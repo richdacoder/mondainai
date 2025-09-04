@@ -39,7 +39,7 @@
                 input_html: { autocomplete: "current-password" } %>
       <div class="form-actions">
         <%= f.button :submit, "Update" %>
-        <%= link_to "Sign Out", destroy_user_session_path %>
+        <%= link_to "Sign Out", destroy_user_session_path, data:{turbo_method: :delete}%>
       </div>
     <% end %>
     <h3>Deactivate My Account</h3>
