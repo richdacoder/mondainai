@@ -41,9 +41,14 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
+    if params["confirm_time"]
+      time = params["request"]["pickup_date"]
+      @request.pickup_date = @request.pickup_date.change(hour: time)
+      @request.save
+    else
+      @request.update(request_params)
+    end
 
-
-    if @request.update(request_params)
 
       if @request.pickup_date
         @message = @request.messages.new({content: "Pickup date has been set for #{@request.pickup_date}"})
@@ -51,22 +56,16 @@ class RequestsController < ApplicationController
         @message.save
       end
       # Redirect to the request's show page (or wherever appropriate) upon successful creation
-      redirect_to request_path(@request), notice: 'Request was successfully sent.'
-    end
+    redirect_to request_path(@request), notice: 'Request was successfully sent.'
   end
 
   private
   def request_params
     # params["request"]["available_times"] = params["request"]["available_times"].drop(0)
-    available_times_array = params["request"]["available_times"]
-    if available_times_array
-      available_times_array = available_times_array.compact_blank
-    else
-      time = params["request"]["pickup_date"]
-      date = @request.pickup_date.change(hour: time)
-      raise
+    # available_times_array = params["request"]["available_times"]
+    if params["request"]["available_times"]
+      params["request"]["available_times"] = params["request"]["available_times"].compact_blank
     end
     params.require(:request).permit(:pickup_date, available_times:[])
-
   end
 end

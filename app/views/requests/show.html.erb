@@ -27,6 +27,7 @@
     <% end %>
     <%# Available times radio buttons %>
     <%= simple_form_for(@request) do |f| %>
+      <%= hidden_field_tag :confirm_time, true %>
       <%= f.input :pickup_date, label: "Select pickup time", collection: @request.available_times, as: :radio_buttons %>
       <%= f.submit "Confirm pickup time", class: "btn btn-primary rounded-3 text-white" %>
     <% end %>
