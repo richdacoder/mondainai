@@ -2,7 +2,7 @@
   <%= render "shared/navbar-back" %>
   <div class="d-flex flex-column gap-3">
     <h2 class="page-title">Requests Received</h2>
-    <% @requests_received.each do | request_hash| %>
+    <% @requests_received.reverse.each do | request_hash| %>
       <div class="card d-flex flex-row align-items-center rounded-4 justify-content-between pe-3 border-body-color overflow-hidden shadow">
         <%= link_to item_path(request_hash[:request].item), class: "d-flex flex-row align-items-center" do %>
           <%= cl_image_tag request_hash[:request].item.photo.key, class: "col-4" %>
