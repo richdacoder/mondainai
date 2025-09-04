@@ -23,7 +23,7 @@ class RequestsController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @request = Request.new(request_params)
+    @request = Request.new
 
     @request.item = @item
     @request.user = current_user
@@ -41,7 +41,7 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    
+
     if @request.update(request_params)
       # Redirect to the request's show page (or wherever appropriate) upon successful creation
       redirect_to request_path(@request), notice: 'Request was successfully sent.'
