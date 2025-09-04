@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :photo, presence: true
+  validates :location, presence: true
+
   enum status: { draft: 0, live: 1, pending: 2, claimed: 3 }
 
 
