@@ -5,14 +5,17 @@
     <%= simple_form_for(@item, data: { controller: "generate-description"}) do |f| %>
       <%= f.input :name, placeholder:"Name" %>
       <%= f.input :photo, as: :file, placeholder:"Add photo"%>
-      <button class="btn btn-primary text-white" data-action="click->generate-description#generate">Generate Description</button>
-      <%= f.input :description, placeholder:"Add description", input_html: {data: {"generate-description-target":"description"} } %>
+      <button class="btn btn-primary text-white" data-action="click->generate-description#generate">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        Generate AI Description
+      </button>
+      <%= f.input :description,  placeholder:"Add description", input_html: {data: {"generate-description-target":"description"}, style: "min-height: 300px" } %>
       <%= f.input :available_date, as: :date, html5: true %>
       <%= f.input :deadline_date, as: :date, html5: true %>
       <%= f.input :location %>
       <%= f.input :dimensions %>
       <%= f.input :weight %>
-      <%= f.submit %>
+      <%= f.submit "Post Item",  class: "btn btn-primary text-white"%>
     <% end %>
   </div>
 </div>
