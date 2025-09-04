@@ -14,7 +14,9 @@
                 input_html: { data: { controller: "flatpickr" } },
                 wrapper_html: { class: "text-center"} %>
         </div>
+
         <%= f.input :available_times, collection: 8..21, as: :check_boxes  %>
+        <%# SELECT PICK UP DATE BUTTON %>
         <%= f.button :submit, "Select Pickup Date",
             class: "btn btn-primary text-white mt-3" %>
         <p class="mt-3 text-success fw-bold" data-pickup-target="message"></p>
@@ -25,6 +27,10 @@
       <%= f.input :pickup_date, label: "Select pickup time", collection: @request.available_times, as: :radio_buttons %>
       <%= f.submit "Confirm pickup time", class: "btn btn-primary rounded-3 text-white" %>
     <% end %>
+
+     <%# GOOGLE MAPS LOCATION %>
+    <%= link_to "Google maps location", "https://www.google.com/maps/preview?q=#{@request.user.address}",
+    class:"btn btn-primary text-white mt-3", target: :_blank %>
     <div id="messages">
       <% @request.messages.each do |message| %>
         <%= render "messages/message", {message: message} %>
