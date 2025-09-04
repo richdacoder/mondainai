@@ -1,5 +1,5 @@
-<% assigned_user = message.user.id == local_assigns[:current_user_id] || message.user == current_user  %>
-<div data-controller="set-sender" data-sender-id="<%= message.user.id %>">
+<div data-controller="set-sender" id="<%= message.id %>" data-sender-id="<%= message.user.id %>">
+  <% assigned_user = message.user.id == local_assigns[:current_user_id] || message.user == current_user  %>
   <div class="d-flex gap-2 align-items-end <%= assigned_user ? "justify-content-end" : "justify-content-start" %>" data-set-sender-target="container">
     <div class="col-2 overflow-hidden">
       <% if !assigned_user && message.user.profile_picture.attached? %>

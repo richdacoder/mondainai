@@ -6,18 +6,19 @@
     <!-- Calendar -->
     <% if @request.available_times == nil %>
       <%= simple_form_for(@request) do |f| %>
-        <div class="d-flex flex-column align-items-center" data-controller="pickup">
+        <div class="d-flex flex-column text-center align-items-center" data-controller="pickup">
           <div class="form-group">
             <%= f.input :pickup_date,
                 label: "Select Your Pickup Date",
                 as: :string,
                 input_html: { data: { controller: "flatpickr" } },
-                wrapper_html: { class: "text-center disabled"} %>
+                wrapper_html: { class: "justify-content-center text-center disabled"} %>
           </div>
           <% if @request.pickup_date %>
             <p> <%= @request.user.name %>! The pickup date is on <%= @request.pickup_date %>!</p>
           <% end %>
-          <%= f.input :available_times, collection: 8..21, as: :check_boxes  %>
+          <!-- Available times -->
+          <%= f.input :available_times, collection: 8..21, as: :check_boxes, wrapper_html: { class: " d-flex flex-row gap-2" }, input_html: { class: "d-flex flex-column border-secondary ms-0" } %>
           <%# SELECT PICK UP DATE BUTTON %>
           <%= f.button :submit, "Select Pickup Date",
             class: "btn btn-primary text-white mt-3" %>
@@ -26,11 +27,13 @@
       <% end %>
     <% elsif @request.pickup_date.hour == 0 && @request.user != current_user %>
       <%# Available times radio buttons %>
-      <%= simple_form_for(@request) do |f| %>
-        <%= hidden_field_tag :confirm_time, true %>
-        <%= f.input :pickup_date, label: "Select pickup time", collection: @request.available_times, as: :radio_buttons %>
-        <%= f.submit "Confirm pickup time", class: "btn btn-primary rounded-3 text-white" %>
-      <% end %>
+      <div class="text-center mb-3">
+        <%= simple_form_for(@request) do |f| %>
+          <%= hidden_field_tag :confirm_time, true %>
+          <%= f.input :pickup_date, label: "Select pickup time", collection: @request.available_times, as: :radio_buttons, wrapper_html: { class: " d-flex flex-row gap-2 justify-content-center" }, input_html: { class: "d-flex flex-column border-secondary ms-0" } %>
+          <%= f.submit "Confirm pickup time", class: "btn btn-primary rounded-3 text-white" %>
+        <% end %>
+      </div>
     <% elsif @request.pickup_date.hour != 0 %>
       <h2>Pickup date is: <%= @request.pickup_date.strftime('%D at %H:%M') %></h2>
     <% end %>

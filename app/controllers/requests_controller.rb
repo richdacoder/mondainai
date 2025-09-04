@@ -46,17 +46,19 @@ class RequestsController < ApplicationController
       @request.pickup_date = @request.pickup_date.change(hour: time)
       @request.status = 1
       @request.save
+      @request.messages.create(
+        content: "#{current_user.name } has confirmed the pickup date for #{@request.pickup_date.strftime('%D at %H:%M')}",
+        user: current_user
+      )
     else
       @request.update(request_params)
+      @request.messages.create(
+        content: "#{current_user.name } has chosen a pickup date for #{@request.pickup_date.strftime('%D')}",
+        user: current_user
+      )
     end
 
-
-      if @request.pickup_date
-        @message = @request.messages.new({content: "Pickup date has been set for #{@request.pickup_date}"})
-        @message.user = current_user
-        @message.save
-      end
-      # Redirect to the request's show page (or wherever appropriate) upon successful creation
+    # Redirect to the request's show page (or wherever appropriate) upon successful creation
     redirect_to request_path(@request), notice: 'Request was successfully sent.'
   end
 
