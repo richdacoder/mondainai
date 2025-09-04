@@ -47,11 +47,9 @@ puts "Creating items..."
 
 
 item1 = Item.new(
-  name: 'Old Chair',
+  name: 'Vintage Chair',
   description: Faker::Quote.robin,
-  location: "meguro",
-  dimensions: "1m x 1m x 1m",
-  weight: 1,
+  location: "Meguro Station ",
   user: andrew
   )
 
@@ -62,9 +60,7 @@ item1 = Item.new(
 item2 = Item.new(
   name: 'New Chair!',
   description: Faker::Quote.robin,
-  location: "shibuya",
-  dimensions: "1m x 1m x 1m",
-  weight: 1,
+  location: "Shibuya Station",
   user: andrew
 )
 
@@ -75,13 +71,11 @@ future_chair = URI.parse("https://curatedinterior.com/wp-content/uploads/2021/04
 item3 = Item.new(
   name: 'Ramen!',
   description: Faker::Quote.robin,
-  location: "shinagawa",
-  dimensions: "1m x 1m x 1m",
-  weight: 1,
+  location: "Shinagawa Station",
   user: andrew
 )
 
-ramen = URI.parse("https://m.media-amazon.com/images/I/813yz-8zlFL.jpg").open
+ramen = URI.parse("https://images.albertsons-media.com/is/image/ABS/960079921-ECOM?$ng-ecom-pdp-desktop$&defaultImage=Not_Available").open
   item3.photo.attach(io: ramen, filename: "ramen.png", content_type: "image/png")
   item3.save
 
@@ -90,7 +84,7 @@ puts "Items created!"
 puts "Creating Requests..."
 Request.create!(
   item: item1,
-  user: alonzo,
+  user: andrew,
   status: 0
 )
 
