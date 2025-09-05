@@ -45,7 +45,7 @@
         <h2><%= @request.pickup_date.strftime('%D at %H:%M') if @request.pickup_date %></h2>
       </div>
     <% end %>
-    <div id="messages" class="w-100 justify-content-center">
+    <div id="messages" class="w-100 mb-5 justify-content-center">
       <%# GOOGLE MAPS LOCATION %>
       <div class="w-100 d-flex justify-content-center">
         <%= link_to "Google maps location", "https://www.google.com/maps/preview?q=#{@request.item.location}",
