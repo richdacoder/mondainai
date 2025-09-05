@@ -45,7 +45,7 @@
         <h2><%= @request.pickup_date.strftime('%D at %H:%M') if @request.pickup_date %></h2>
       </div>
     <% end %>
-    <div id="messages" class="w-100 justify-content-center">
+    <div id="messages" class="w-100 mb-5 justify-content-center">
       <%# GOOGLE MAPS LOCATION %>
       <div class="w-100 d-flex justify-content-center">
         <%= link_to "Google maps location", "https://www.google.com/maps/preview?q=#{@request.item.location}",
@@ -55,7 +55,7 @@
         <%= render "messages/message", {message: message, user: current_user} %>
       <% end %>
     </div>
-    <div class="my-3 w-100">
+    <div class="my-3 px-3 fixed-bottom  w-100">
       <%= simple_form_for [@request, @message], html: { class: "d-flex align-items-center w-100" } do |f| %>
         <%= f.text_field :content,
         class: "form-control me-2 rounded-3 border-primary bg-white flex-grow-2",
