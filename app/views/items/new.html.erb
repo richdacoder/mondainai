@@ -2,10 +2,10 @@
   <%= render "shared/navbar-back" %>
   <div>
     <h2 class="page-title">Post Item</h2>
-    <%= simple_form_for(@item, data: { controller: "generate-description"}) do |f| %>
+    <%= simple_form_for(@item, data: { controller: "generate-description"}, defaults: { input_html: { class: "bg-white border-primary rounded-3" }}) do |f| %>
       <%= f.input :name, placeholder:"Name" %>
       <%= f.input :photo, as: :file, placeholder:"Add photo"%>
-      <button class="btn btn-primary text-white" data-action="click->generate-description#generate">
+      <button class="btn btn-primary rounded-3 text-white" data-action="click->generate-description#generate">
         <i class="fa-solid fa-wand-magic-sparkles"></i>
         Generate AI Description
       </button>
@@ -15,7 +15,7 @@
       <%= f.input :location %>
       <%= f.input :dimensions %>
       <%= f.input :weight %>
-      <%= f.submit "Post Item",  class: "btn btn-primary text-white"%>
+      <%= f.submit "Post Item",  class: "btn btn-primary rounded-3 mb-5 text-white"%>
     <% end %>
   </div>
 </div>

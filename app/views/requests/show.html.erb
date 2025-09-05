@@ -42,7 +42,7 @@
     <% elsif @request.pickup_date.hour != 0 %>
       <div class="d-flex flex-column align-items-center gap-1 justify-content-center mt-3">
         <h2>Pickup date is: </h2>
-        <h2><%= @request.pickup_date.strftime('%D at %H:%M') %></h2>
+        <h2><%= @request.pickup_date.strftime('%D at %H:%M') if @request.pickup_date %></h2>
       </div>
     <% end %>
     <div id="messages" class="w-100 justify-content-center">
