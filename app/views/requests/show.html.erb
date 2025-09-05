@@ -5,27 +5,29 @@
     <%= turbo_stream_from @request %>
     <!-- Calendar -->
     <% if @request.available_times == nil %>
-      <%= simple_form_for(@request) do |f| %>
-        <div class="d-flex flex-column text-center align-items-center" data-controller="pickup">
-          <div class="form-group">
-            <h2 class="mt-3">Select your pickup date</h2>
-            <%= f.input :pickup_date,
+      <% if current_user == @request.user %>
+        <%= simple_form_for(@request) do |f| %>
+          <div class="d-flex flex-column text-center align-items-center" data-controller="pickup">
+            <div class="form-group">
+              <h2 class="mt-3">Select your pickup date</h2>
+              <%= f.input :pickup_date,
                 label: " ",
                 as: :string,
                 input_html: { data: { controller: "flatpickr", flatpickr_min_date_value: @request.item.available_date, flatpickr_max_date_value: @request.item.deadline_date} },
                 wrapper_html: { class: "text-center disabled"} %>
-          </div>
-          <% if @request.pickup_date %>
-            <p> <%= @request.user.name %>! The pickup date is on <%= @request.pickup_date %>!</p>
-          <% end %>
-          <!-- Available times -->
-          <h3>Select hours when you'll be available</h3>
-          <%= f.input :available_times, collection: 8..21, as: :check_boxes, wrapper_html: { class: " d-flex flex-row gap-2" }, input_html: { class: "d-flex flex-column border-secondary ms-0" } %>
-          <%# SELECT PICK UP DATE BUTTON %>
-          <%= f.button :submit, "Select Pickup Date",
+            </div>
+            <% if @request.pickup_date %>
+              <p> <%= @request.user.name %>! The pickup date is on <%= @request.pickup_date %>!</p>
+            <% end %>
+            <!-- Available times -->
+            <h3>Select hours when you'll be available</h3>
+            <%= f.input :available_times, collection: 8..21, as: :check_boxes, wrapper_html: { class: " d-flex flex-row gap-2" }, input_html: { class: "d-flex flex-column border-secondary ms-0" } %>
+            <%# SELECT PICK UP DATE BUTTON %>
+            <%= f.button :submit, "Select Pickup Date",
             class: "btn btn-primary rounded-3 text-white mt-3" %>
-          <p class="mt-3 text-success fw-bold" data-pickup-target="message"></p>
-        </div>
+            <p class="mt-3 text-success fw-bold" data-pickup-target="message"></p>
+          </div>
+        <% end %>
       <% end %>
     <% elsif @request.pickup_date.hour == 0 && @request.user != current_user %>
       <%# Available times radio buttons %>

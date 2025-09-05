@@ -40,6 +40,14 @@ yuichi = User.create!(
    preferred_language: 'japanese',
 )
 
+Miku = User.create!(
+  email: 'miku@email.com',
+  password: "123456",
+  name: 'Miku',
+  phone_number: Faker::PhoneNumber.phone_number,
+   preferred_language: 'japanese',
+)
+
 puts "Users created!"
 
 puts "Creating items..."
