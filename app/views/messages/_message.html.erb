@@ -1,12 +1,10 @@
-<div data-controller="set-sender" id="<%= message.id %>" data-sender-id="<%= message.user.id %>">
-  <% assigned_user = message.user.id == local_assigns[:current_user_id] || message.user == current_user  %>
-  <div class="d-flex gap-2 align-items-end <%= assigned_user ? "justify-content-end" : "justify-content-start" %>" data-set-sender-target="container">
-    <div class="col-2 overflow-hidden">
-      <% if !assigned_user && message.user.profile_picture.attached? %>
+<div data-controller="set-sender" id="<%= message.id %>" data-set-sender-user-id-value="<%= message.user.id %>" data-sender-id="<%= message.user.id %>">
+  <div class="d-flex gap-2 align-items-end" data-set-sender-target="container">
+    <div class="col-2 overflow-hidden d-none" data-set-sender-target="otherPerson">
+      <% if message.user.profile_picture.attached? %>
         <%= cl_image_tag message.user.profile_picture.key,  class:"col-12 img-thumbnail rounded-circle" %>
-      <% elsif !assigned_user %>
-        <%= image_tag 'default-box.svg', class:"col-12" %>
       <% end %>
+      <%= image_tag 'default-box.svg', class:"col-12" %>
     </div>
     <div class="p-2" data-set-sender-target="bubble">
       <%# info: current_user is being passed in controller because websockets are missing Warden from devise %>
@@ -17,15 +15,14 @@
         <span> <%= message.content %></span>
       <% end %>
     </div>
-    <div class="col-2 overflow-hidden">
-      <% if assigned_user && message.user.profile_picture.attached? %>
+    <div class="col-2 overflow-hidden d-none" data-set-sender-target="me">
+      <% if message.user.profile_picture.attached? %>
         <%= cl_image_tag message.user.profile_picture.key,  class:"col-12 img-thumbnail rounded-circle" %>
-      <% elsif assigned_user %>
-        <%= image_tag 'default-box.svg', class:"col-12" %>
       <% end %>
+      <%= image_tag 'default-box.svg', class:"col-12" %>
     </div>
   </div>
-  <div class="d-flex <%= assigned_user ? "justify-content-end" : "justify-content-start" %> mb-2" data-set-sender-target="container" >
+  <div class="d-flex mb-2" data-set-sender-target="container" >
     <small class="text-secondary fw-light" > <%= message.created_at.strftime("%b %e, %l:%M %p") %> </small>
   </div>
 </div>

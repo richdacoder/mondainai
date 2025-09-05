@@ -1,18 +1,20 @@
-<div class="container py-4">
+<div class="container">
   <%= render "shared/navbar-back-messages" %>
-  <div class="card border-0 shadow-sm rounded-4">
-    <div class="card-body p-0 rounded-bottom-4">
-      <div class="position-relative">
-        <% if @item.photo.attached? %>
-          <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill, class: "img-fluid w-100" %>
-        <% else %>
-          <%= image_tag 'default-box.svg', class:"card-img-top p-4 card-image-height" %>
-        <% end %>
-      </div>
-      <div class="p-4">
-        <div class="d-flex justify-content-between">
-          <h2 class="fw-bold mb-0 align-content-center" ><%= @item.name %></h2>
-          <div class="d-flex flex-column align-items-center" style="width: min-content">
+</div>
+<div class="card border-0 shadow-sm rounded-4">
+  <div class="card-body p-0 rounded-bottom-4">
+    <div class="position-relative">
+      <% if @item.photo.attached? %>
+        <%= cl_image_tag @item.photo.key, height: 400, width: 400, crop: :fill, class: "img-fluid w-100" %>
+      <% else %>
+        <%= image_tag 'default-box.svg', class:"card-img-top p-4 card-image-height" %>
+      <% end %>
+    </div>
+    <div class="p-4">
+      <div class="d-flex justify-content-between">
+        <h2 class="fw-bold mb-0 align-content-center" ><%= @item.name %></h2>
+        <div class="d-flex flex-column align-items-center" style="width: min-content">
+          <% if @item.user != current_user %>
             <% if @request.new_record? %>
               <%= link_to item_requests_path(@item),
                           data: { turbo_method: :post },
@@ -27,30 +29,31 @@
                 <span class="mb-0 text-center fw-normal">Message <%= @item.user.name.capitalize %></span>
               <% end %>
             <% end %>
-          </div>
+          <% end %>
         </div>
-        <h5 class="small text-muted mb-1">Description</h5>
-        <p><%= @item.description %></p>
-        <div class="row g-2 mb-3">
-          <div class="col-6">
-            <h5 class="small text-muted mb-1">Location</h5>
-            <p class="mb-0"><%= @item.location %></p>
-          </div>
-          <div class="col-6">
-            <h5 class="small text-muted mb-1">Dimensions</h5>
-            <p class="mb-0"><%= @item.dimensions %></p>
-          </div>
-          <div class="col-6">
-            <h5 class="small text-muted mb-1">Weight</h5>
-            <p class="mb-0"><%= @item.weight %></p>
-          </div>
-        </div>
-        <%= link_to "https://www.google.com/maps/preview?q=#{@item.location}",
-    class:"btn btn-primary text-white mt-3", target: :_blank  do %>
-          <i class="fa-solid fa-location-dot me-2"></i>
-          Google maps location
-        <% end %>
       </div>
+      <h5 class="small mb-1">Description</h5>
+      <p><%= @item.description %></p>
+      <div class="row g-2 mb-3">
+        <div class="col-6">
+          <h5 class="small  mb-1">Location</h5>
+          <p class="mb-0"><%= @item.location %></p>
+        </div>
+        <div class="col-6">
+          <h5 class="small mb-1">Dimensions</h5>
+          <p class="mb-0"><%= @item.dimensions %></p>
+        </div>
+        <div class="col-6">
+          <h5 class="small mb-1">Weight</h5>
+          <p class="mb-0"><%= @item.weight %></p>
+        </div>
+      </div>
+      <%= link_to "https://www.google.com/maps/preview?q=#{@item.location}",
+    class:"btn btn-primary rounded-3 text-white mt-3", target: :_blank  do %>
+        <i class="fa-solid fa-location-dot me-2"></i>
+        Google maps location
+      <% end %>
     </div>
   </div>
+</div>
 </div>
