@@ -11,6 +11,7 @@ $body-bg:                $mondainai-background;
 $font-size-base:         1rem;
 
 // Colors
+$secondary:  $font-color;
 $body-color: $font-color;
 $primary:    $primary-action;
 $success:    $green;
@@ -56,4 +57,22 @@ $border-radius-xxl:           1rem;
 
 .chat-other-user p {
   margin: 0;
+}
+
+.edit_request .form-check {
+  padding: 0;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.edit_request legend {
+  display: none;
+}
+
+.edit_request .flatpickr-calendar {
+margin: 0 auto;
+}
+
+.edit_request .form-check-label {
+  color: $secondary !important;
 }
