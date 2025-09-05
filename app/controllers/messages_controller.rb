@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
 
     if @message.save
     else
-      render :new
+      render 'requests/show'
     end
   end
 
