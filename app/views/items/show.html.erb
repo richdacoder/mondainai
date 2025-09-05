@@ -1,7 +1,7 @@
 <div class="container">
   <%= render "shared/navbar-back-messages" %>
 </div>
-<div class="card border-0 shadow-sm rounded-4">
+<div class="card border-0 rounded-4">
   <div class="card-body p-0 rounded-bottom-4">
     <div class="position-relative">
       <% if @item.photo.attached? %>
@@ -12,7 +12,7 @@
     </div>
     <div class="p-4">
       <div class="d-flex justify-content-between">
-        <h2 class="fw-bold mb-0 align-content-center" ><%= @item.name %></h2>
+        <h2 class="fw-bold mb-3 align-content-center" ><%= @item.name %></h2>
         <div class="d-flex flex-column align-items-center" style="width: min-content">
           <% if @item.user != current_user %>
             <% if @request.new_record? %>
@@ -32,6 +32,9 @@
           <% end %>
         </div>
       </div>
+      <div class="d-flex gap-2">
+        <p><%= @item.user.name %></p>
+      </div>
       <h5 class="small mb-1">Description</h5>
       <p><%= @item.description %></p>
       <div class="row g-2 mb-3">
@@ -43,10 +46,10 @@
           <h5 class="small mb-1">Dimensions</h5>
           <p class="mb-0"><%= @item.dimensions %></p>
         </div>
-        <div class="col-6">
-          <h5 class="small mb-1">Weight</h5>
-          <p class="mb-0"><%= @item.weight %></p>
-        </div>
+      </div>
+      <div class="col-6">
+        <h5 class="small mb-1">Weight</h5>
+        <p class="mb-0"><%= @item.weight %></p>
       </div>
       <%= link_to "https://www.google.com/maps/preview?q=#{@item.location}",
     class:"btn btn-primary rounded-3 text-white mt-3", target: :_blank  do %>
